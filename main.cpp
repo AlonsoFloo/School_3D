@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 
     Point3D* originSphere = new Point3D(50., 50., 50.);
     Grid3D grid2(originGrid, 100, 100, 100);
-    Sphere3D sphere(originSphere, 80);
+    Sphere3D sphere(originSphere, 40);
     grid2.addImplicitObject(&sphere);
     filepathTmp = "C:\\Users\\Maxime\\Desktop\\Model_3D\\MAILLAGE\\tmp_sphere_implicite.mesh";
     grid2.writeMesh(filepathTmp, false);
