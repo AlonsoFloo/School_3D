@@ -10,8 +10,8 @@ public:
     Node3D();
     void appendUniqTriangleIndex(int index);
     void appendUniqPointIndex(int index);
-    QVector<int> getTriangleIndexList();
-    QVector<int> getPointIndexList();
+    QVector<int> getTriangleIndexList() const;
+    QVector<int> getPointIndexList() const;
 
     Point3D* point;
 private:

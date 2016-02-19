@@ -15,7 +15,7 @@ Grid3D::Grid3D(Point3D* newOrigin, int newNumberX, int newNumberY, int newNumber
 }
 
 
-void Grid3D::writeMesh(string filepath, bool withGrid) {
+void Grid3D::writeMesh(string filepath, bool withGrid) const {
     QString filename = QString::fromStdString(filepath);
     QFile file( filename );
     if ( file.open(QIODevice::ReadWrite|QIODevice::Truncate) )
@@ -108,7 +108,7 @@ void Grid3D::writeMesh(string filepath, bool withGrid) {
     }
 }
 
-Point3D* Grid3D::getBarycentreForPoint(Point3D* p1, double p1Value, Point3D* p2, double p2Value) {
+Point3D* Grid3D::getBarycentreForPoint(Point3D* p1, double p1Value, Point3D* p2, double p2Value) const {
     if ((p1Value > 0. && p2Value > 0.) || (p1Value < 0. && p2Value < 0.) || (p1Value - p2Value == 0)) {
         return nullptr;
     }
@@ -116,7 +116,7 @@ Point3D* Grid3D::getBarycentreForPoint(Point3D* p1, double p1Value, Point3D* p2,
     return new Point3D(t*p1->x + (1-t)*p2->x, t*p1->y + (1-t)*p2->y, t*p1->z + (1-t)*p2->z);
 }
 
-string Grid3D::getBarycentreStringForPoint(Point3D* p1, double p1Value, Point3D* p2, double p2Value) {
+string Grid3D::getBarycentreStringForPoint(Point3D* p1, double p1Value, Point3D* p2, double p2Value) const {
     Point3D *b = this->getBarycentreForPoint(p1, p1Value, p2, p2Value);
     if (b != nullptr) {
         return std::to_string(b->x) + " " + std::to_string(b->y) + " " + std::to_string(b->z) + " 0";
@@ -124,7 +124,7 @@ string Grid3D::getBarycentreStringForPoint(Point3D* p1, double p1Value, Point3D*
     return "";
 }
 
-void Grid3D::displayData() {
+void Grid3D::displayData() const {
     cout << "Origin point : " << this->origin->x << " " << this->origin->y << " " << this->origin->z << endl;
     cout << "Number on X : " << this->numberX << endl;
     cout << "Number on Y : " << this->numberY << endl;
@@ -141,16 +141,16 @@ void Grid3D::displayData() {
     cout << endl<< endl<< endl;
 }
 
-int Grid3D::getIndexFor(int x, int y, int z) {
+int Grid3D::getIndexFor(int x, int y, int z) const {
     return x + (this->numberX + 1) * y + (this->numberX + 1) * (this->numberY + 1) * z;
 }
 
-double Grid3D::getPropsForPoint(int x, int y, int z) {
+double Grid3D::getPropsForPoint(int x, int y, int z) const {
     int index = this->getIndexFor(x, y, z);
     return this->getPropsForPoint(index);
 }
 
-double Grid3D::getPropsForPoint(int index) {
+double Grid3D::getPropsForPoint(int index) const {
     return this->nodePropsList.at(index);
 }
 
@@ -165,7 +165,7 @@ void Grid3D::setPropsForPoint(int index, double value) {
 
 }
 
-void Grid3D::addImplicitObject(ImplicitObject* s) {
+void Grid3D::addImplicitObject(const ImplicitObject* s) {
     for(int indexZ = 0; indexZ < numberZ + 1; ++indexZ) {
         for(int indexY = 0; indexY < numberY + 1; ++indexY) {
             for(int indexX = 0; indexX < numberX + 1; ++indexX) {

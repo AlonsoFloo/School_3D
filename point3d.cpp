@@ -20,7 +20,7 @@ Point3D* Point3D::crossProduct(Point3D* p1, Point3D* p2) {
     return p;
 }
 
-Point3D* Point3D::normalize() {
+Point3D* Point3D::normalize() const {
     double normal = std::sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
     if (normal < 0.00000000001) {
         return new Point3D(0.,0.,0.);

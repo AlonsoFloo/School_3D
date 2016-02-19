@@ -19,10 +19,10 @@ void Node3D::appendUniqPointIndex(int index) {
     }
 }
 
-QVector<int> Node3D::getTriangleIndexList() {
+QVector<int> Node3D::getTriangleIndexList() const {
     return this->triangleIndexList;
 }
 
-QVector<int> Node3D::getPointIndexList() {
+QVector<int> Node3D::getPointIndexList() const {
     return this->pointIndexList;
 }

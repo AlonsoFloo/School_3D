@@ -7,7 +7,7 @@ class Sphere3D : public ImplicitObject
 {
 public:
     Sphere3D(Point3D* newCenter, double newRad);
-    double getDistance(const Point3D* p);
+    double getDistance(const Point3D* p) const;
 
 private:
     Point3D* center;

@@ -13,7 +13,7 @@ public:
 
     //Calcule la factorielle de 2 vecteurs
     static Point3D* crossProduct(Point3D* p1, Point3D* p2);
-    Point3D* normalize();
+    Point3D* normalize() const;
 };
 
 #endif // POINT3D_H

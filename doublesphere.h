@@ -6,7 +6,7 @@ class DoubleSphere : public ImplicitObject
 {
 public:
     DoubleSphere(Sphere3D* newS1, Sphere3D* newS2);
-    double getDistance(const Point3D* p);
+    double getDistance(const Point3D* p) const;
 
 private:
     Sphere3D* s1;

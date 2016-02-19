@@ -5,7 +5,7 @@
 class ImplicitObject
 {
 public:
-    virtual double getDistance(const Point3D* p) = 0;
+    virtual double getDistance(const Point3D* p) const = 0;
 };
 
 #endif // IMPLICITOBJECT_H
