@@ -23,10 +23,10 @@ void Grid3D::writeMesh(string filepath, bool withGrid) const {
         QTextStream stream( &file);
 
         QVector<string> pointList;
-        for(int indexZ = 0; indexZ < this->numberZ + 1; ++indexZ) {
-            for(int indexY = 0; indexY < this->numberY + 1; ++indexY) {
-                for(int indexX = 0; indexX < this->numberX + 1; ++indexX) {
-                    if (withGrid) {
+        if (withGrid) {
+            for(int indexZ = 0; indexZ < this->numberZ + 1; ++indexZ) {
+                for(int indexY = 0; indexY < this->numberY + 1; ++indexY) {
+                    for(int indexX = 0; indexX < this->numberX + 1; ++indexX) {
                         pointList.append(std::to_string(this->origin->x + indexX) + " " + std::to_string(this->origin->y + indexY) + " " + std::to_string(this->origin->z + indexZ) + " 0");
                     }
                 }
