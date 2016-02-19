@@ -5,7 +5,7 @@ PointList::PointList(QVector<Point3D*> newPointList) : pointList(newPointList)
 
 }
 
-double PointList::getDistance(const Point3D* p) {
+double PointList::getDistance(const Point3D* p) const {
     double minValue = -1;
     bool isFirst = true;
     for (int i = 0; i < pointList.length(); ++i) {

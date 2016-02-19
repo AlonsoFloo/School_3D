@@ -79,7 +79,7 @@ void Surface3D::parseFile(string filepath) {
     }
 }
 
-void Surface3D::displayData() {
+void Surface3D::displayData() const {
     cout << "Point number : " << this->nodesNumber << endl;
     cout << "Shapes number : " << this->shapeNumber << endl;
     Point3D *p = this->getMaxPoint();
@@ -97,7 +97,7 @@ void Surface3D::displayData() {
     cout << endl<< endl<< endl;
 }
 
-void Surface3D::writeMesh(string filepath) {
+void Surface3D::writeMesh(string filepath) const {
     QString filename = QString::fromStdString(filepath);
     QFile file( filename );
     if ( file.open(QIODevice::ReadWrite|QIODevice::Truncate) )
@@ -123,7 +123,7 @@ void Surface3D::writeMesh(string filepath) {
     }
 }
 
-Point3D* Surface3D::getMinPoint() {
+Point3D* Surface3D::getMinPoint() const {
     double minX = 0;
     double minY = 0;
     double minZ = 0;
@@ -148,7 +148,7 @@ Point3D* Surface3D::getMinPoint() {
     return p;
 }
 
-Point3D* Surface3D::getMaxPoint() {
+Point3D* Surface3D::getMaxPoint() const {
     double maxX = 0;
     double maxY = 0;
     double maxZ = 0;
@@ -174,7 +174,7 @@ Point3D* Surface3D::getMaxPoint() {
 }
 
 
-Point3D* Surface3D::calculateNodeNormal(int indexNode){
+Point3D* Surface3D::calculateNodeNormal(int indexNode) const {
     Point3D *sumVector = new Point3D();
     sumVector->x = 0;
     sumVector->y = 0;
@@ -197,7 +197,7 @@ Point3D* Surface3D::calculateNodeNormal(int indexNode){
     return sumVector;
 }
 
-Point3D* Surface3D::calculateTriangleNormal(int indexTriangle) {
+Point3D* Surface3D::calculateTriangleNormal(int indexTriangle) const {
     Triangle3D* t = this->triangleList.at(indexTriangle);
     Point3D* p1 = this->nodeList.at(t->indexP1)->point;
     Point3D* p2 = this->nodeList.at(t->indexP2)->point;
@@ -224,7 +224,7 @@ void Surface3D::bigUp(double ratio) {
     }
 }
 
-double Surface3D::averageNodeCloseEachOther() {
+double Surface3D::averageNodeCloseEachOther() const {
     double value = 0.;
     for (int i = 0; i < this->nodeList.length(); ++i) {
         Node3D *n = this->nodeList.at(i);
@@ -233,7 +233,7 @@ double Surface3D::averageNodeCloseEachOther() {
     return value / this->nodeList.length();
 }
 
-double Surface3D::averageTriangleCloseEachOther() {
+double Surface3D::averageTriangleCloseEachOther() const {
     double value = 0.;
     for (int i = 0; i < this->nodeList.length(); ++i) {
         Node3D *n = this->nodeList.at(i);
