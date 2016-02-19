@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     Point3D* originGrid = new Point3D(0., 0., 0.);
 
-    /*Grid3D grid(originGrid, 4, 4, 4, 0.);
+    Grid3D grid(originGrid, 4, 4, 4, 0.);
     filepathTmp = "C:\\Users\\Maxime\\Desktop\\Model_3D\\MAILLAGE\\tmp_grid.mesh";
     grid.writeMesh(filepathTmp, true);
     grid.displayData();
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     DoubleSphere doubleSphere(sphere1, sphere2);
     grid3.addImplicitObject(&doubleSphere);
     filepathTmp = "C:\\Users\\Maxime\\Desktop\\Model_3D\\MAILLAGE\\tmp_double_sphere_implicite.mesh";
-    grid3.writeMesh(filepathTmp, false);*/
+    grid3.writeMesh(filepathTmp, false);
 
     Grid3D grid4(originGrid, 100, 100, 100, 10.);
     QVector<Point3D*> pointList;
