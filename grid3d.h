@@ -10,7 +10,7 @@ using namespace std;
 class Grid3D
 {
 public:
-    Grid3D(Point3D* newOrigin, int newNumberX, int newNumberY, int newNumberZ);
+    Grid3D(Point3D* newOrigin, int newNumberX, int newNumberY, int newNumberZ, double newBarycentreDefaultUnkownedValue);
     //ecrit la sphere dans un fichier .mesh
     void writeMesh(string filepath, bool withGrid) const;
     //Affiche les coordonnées x, y, z
@@ -38,6 +38,7 @@ private:
     int numberX;
     int numberY;
     int numberZ;
+    double barycentreDefaultUnkownedValue;
 };
 
 #endif // GRID3D_H

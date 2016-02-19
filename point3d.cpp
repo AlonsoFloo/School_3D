@@ -31,3 +31,7 @@ Point3D* Point3D::normalize() const {
     p->z = this->z / normal;
     return p;
 }
+
+double Point3D::getDistanceTo(const Point3D *p) const {
+    return (std::sqrt(pow(this->x - p->x, 2) +  pow(this->y - p->y, 2) + pow(this->z - p->z, 2)));
+}

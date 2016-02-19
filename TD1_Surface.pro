@@ -17,7 +17,8 @@ SOURCES += main.cpp \
     grid3d.cpp \
     sphere3d.cpp \
     implicitobject.cpp \
-    doublesphere.cpp
+    doublesphere.cpp \
+    pointlist.cpp
 
 HEADERS += \
     point3d.h \
@@ -27,4 +28,5 @@ HEADERS += \
     grid3d.h \
     sphere3d.h \
     implicitobject.h \
-    doublesphere.h
+    doublesphere.h \
+    pointlist.h

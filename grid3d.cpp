@@ -3,7 +3,7 @@
 #include <QFile>
 #include <QTextStream>
 
-Grid3D::Grid3D(Point3D* newOrigin, int newNumberX, int newNumberY, int newNumberZ) : origin(newOrigin), numberX(newNumberX), numberY(newNumberY), numberZ(newNumberZ)
+Grid3D::Grid3D(Point3D* newOrigin, int newNumberX, int newNumberY, int newNumberZ, double newBarycentreDefaultUnkownedValue) : origin(newOrigin), numberX(newNumberX), numberY(newNumberY), numberZ(newNumberZ), barycentreDefaultUnkownedValue(newBarycentreDefaultUnkownedValue)
 {
     for(int indexZ = 0; indexZ < this->numberZ + 1; ++indexZ) {
         for(int indexY = 0; indexY < this->numberY + 1; ++indexY) {
@@ -109,10 +109,12 @@ void Grid3D::writeMesh(string filepath, bool withGrid) const {
 }
 
 Point3D* Grid3D::getBarycentreForPoint(Point3D* p1, double p1Value, Point3D* p2, double p2Value) const {
-    if ((p1Value > 0. && p2Value > 0.) || (p1Value < 0. && p2Value < 0.) || (p1Value - p2Value == 0)) {
+    if ((p1Value > barycentreDefaultUnkownedValue && p2Value > barycentreDefaultUnkownedValue)
+            || (p1Value < barycentreDefaultUnkownedValue && p2Value < barycentreDefaultUnkownedValue)
+            || (p1Value - p2Value == 0)) {
         return nullptr;
     }
-    double t = p1Value / (p1Value - p2Value);
+    double t =  1 - ((p1Value - barycentreDefaultUnkownedValue) / (p1Value - p2Value));
     return new Point3D(t*p1->x + (1-t)*p2->x, t*p1->y + (1-t)*p2->y, t*p1->z + (1-t)*p2->z);
 }
 
